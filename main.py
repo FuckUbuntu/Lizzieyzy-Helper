@@ -1,4 +1,6 @@
 import os,re
+import base64,os
+from icon import img
 from tkinter import *
 from tkinter.ttk import *
 from plugins import jsonw
@@ -10,6 +12,11 @@ def ui():
     root=Tk()
     root.title("Lizzieyzy快速设置")
     root.geometry('720x480')
+    tmp = open("tmp.ico","wb+")
+    tmp.write(base64.b64decode(img))
+    tmp.close()
+    root.iconbitmap("tmp.ico")
+    os.remove("tmp.ico")
 
     enginlb = Label(root,text='引擎')
     enginlb.place(relx=0.1,rely=0.05)
