@@ -1,6 +1,6 @@
 import os,re
 import base64,os
-from icon import img
+from plugins.icon import img
 from tkinter import *
 from tkinter.ttk import *
 from plugins import jsonw
