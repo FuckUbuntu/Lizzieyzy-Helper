@@ -28,7 +28,6 @@ def write(cbox):
     return True
 def load():
     checkdir()
-    
     try:
         with open(path+'\\config.json','r+', encoding='utf-8') as cfg:
             cbox = json.load(cfg)

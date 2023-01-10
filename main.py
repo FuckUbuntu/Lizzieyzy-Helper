@@ -23,16 +23,19 @@ def ui():
     varengin = StringVar(root)
     varweight = StringVar(root)
     varcfg = StringVar(root)
+    varyzy = StringVar(root)
     varkomi = DoubleVar(root)
     varh = IntVar(root)
     varw = IntVar(root)
     enginlist = scan('Engin','.*.exe')
     weightlist = scan('Weight','.*')
     cfglist = scan('Config','.*.cfg')
+    yzylist = scan('.\\','.*Lizzie.*.exe')
     cbox=jsonw.load()
     varengin.set(cbox['engin'] if 'engin' in cbox.keys() else enginlist[0])
     varweight.set(cbox['weight'] if 'weight' in cbox.keys() else weightlist[0])
     varcfg.set(cbox['cfg'] if 'cfg' in cbox.keys() else cfglist[0])
+    varyzy.set(cbox['yzy'] if 'yzy' in cbox.keys() else yzylist[0])
     varkomi.set(cbox['komi'] if 'komi' in cbox.keys() else 7.5)
     varw.set(cbox['w'] if 'w' in cbox.keys() else 19)
     varh.set(cbox['h'] if 'h' in cbox.keys() else 19)
@@ -51,16 +54,20 @@ def ui():
     cfglb = Label(root,text='配置文件')
     cfglb.place(relx=0.1,rely=0.25)
     cfgcomb = Combobox(root, values=cfglist ,textvariable=varcfg)
-    #cfgcomb.current(0)
     cfgcomb.place(relx=0.2,rely=0.25,relwidth=0.6)
 
     komilb = Label(root,text='贴目')
     komilb.place(relx=0.1,rely=0.35)
-    komihintlb = Label(root,text='可以自行输入')
-    komihintlb.place(relx=0.42,rely=0.35)
-    komicomb = Combobox(root,textvariable=varkomi,values=[0.0,0.5,2.5,6.5,7.5])
-    #komicomb.current(0)
-    komicomb.place(relx=0.2,rely=0.35,relwidth=0.2)
+    komihintlb = Label(root,text='可输入')
+    komihintlb.place(relx=0.32,rely=0.35)
+    komicomb = Combobox(root,textvariable=varkomi,values=[0.0,0.5,2.5,3.5,6.5,7.5])
+    komicomb.place(relx=0.2,rely=0.35,relwidth=0.1)
+
+    yzylb = Label(root,text='指定yzy程序')
+    yzylb.place(relx=0.4,rely=0.35)
+    yzycomb = Combobox(root, values=yzylist, textvariable=varyzy)
+    yzycomb.place(relx=0.5,rely=0.35,relwidth=0.3)
+
     
     wlb= Label(root, text='棋盘尺寸：宽')
     wlb.place(relx=0.1,rely=0.45)
@@ -77,6 +84,7 @@ def ui():
         cbox['engin']=str(engincomb.get())
         cbox['weight']=str(weightcomb.get())
         cbox['cfg']=str(cfgcomb.get())
+        cbox['yzy']=str(yzycomb.get())
         cbox['komi']=float(komicomb.get())
         cbox['w']=int(wspinbox.get())
         cbox['h']=int(hspinbox.get())
@@ -87,13 +95,13 @@ def ui():
         textprev.config(state=DISABLED) #禁止编辑
         return cbox
 
-    def start():
+    def start():        #启动Lizzieyzy
         cbox = prev()
         command = preview(cbox,2)
         res = jsonw.set("config.txt",command,cbox["komi"],cbox["w"],cbox["h"])
         if(res==True):
             jsonw.write(cbox)
-            os.system('jre\java17\\bin\javaw.exe -jar lizzie-yzy2.5.1-shaded.jar')#jar方式启动
+            os.system(str(yzycomb.get()))#jar方式启动
 
 
 
