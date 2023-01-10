@@ -1,5 +1,6 @@
 import os,re
 import base64,os
+import webbrowser
 from plugins.icon import img
 from tkinter import *
 from tkinter.ttk import *
@@ -88,9 +89,15 @@ def ui():
     btnstart.place(relx=0.6,rely=0.55,relwidth=0.2)
 
     textprev = Text(root)
-    textprev.place(relx=0.1,rely=0.65,relwidth=0.8,relheight=0.3)
+    textprev.place(relx=0.1,rely=0.65,relwidth=0.8,relheight=0.25)
     textprev.config(state=DISABLED)
     #textprev.config(state=NORMAL)
+
+    btnlink = Label(root, text='KataGo公益下载站 www.katago.dog',foreground='blue')
+    btnlink.place(relx=0.5, rely=0.94,anchor="center")
+    def open_url(event):
+        webbrowser.open("https://www.katago.dog", new=0)
+    btnlink.bind("<Button-1>", open_url)
 
     root.mainloop()
 
