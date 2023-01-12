@@ -47,42 +47,44 @@ def ui():
 
 
     enginlb = Label(root,text='引擎')
-    enginlb.place(relx=0.1,rely=0.05)
+    enginlb.place(relx=0.05,rely=0.05)
     engincomb = Combobox(root, values=enginlist, textvariable=varengin)
-    engincomb.place(relx=0.2,rely=0.05,relwidth=0.6)
+    engincomb.place(relx=0.15,rely=0.05,relwidth=0.65)
+    btengindown = Button(root, text = "下载")
+    btengindown.place(relx = 0.8, rely = 0.05, relwidth=0.1)
 
     weightlb = Label(root,text='权重')
-    weightlb.place(relx=0.1,rely=0.15)
+    weightlb.place(relx=0.05,rely=0.15)
     weightcomb = Combobox(root, values=weightlist, textvariable=varweight)
-    weightcomb.place(relx=0.2,rely=0.15,relwidth=0.6)
+    weightcomb.place(relx=0.15,rely=0.15,relwidth=0.65)
 
     cfglb = Label(root,text='配置文件')
-    cfglb.place(relx=0.1,rely=0.25)
+    cfglb.place(relx=0.05,rely=0.25)
     cfgcomb = Combobox(root, values=cfglist ,textvariable=varcfg)
-    cfgcomb.place(relx=0.2,rely=0.25,relwidth=0.6)
+    cfgcomb.place(relx=0.15,rely=0.25,relwidth=0.65)
 
     komilb = Label(root,text='贴目')
-    komilb.place(relx=0.1,rely=0.35)
+    komilb.place(relx=0.05,rely=0.35)
     komihintlb = Label(root,text='可输入')
-    komihintlb.place(relx=0.32,rely=0.35)
+    komihintlb.place(relx=0.27,rely=0.35)
     komicomb = Combobox(root,textvariable=varkomi,values=[0.0,0.5,2.5,3.5,6.5,7.5])
-    komicomb.place(relx=0.2,rely=0.35,relwidth=0.1)
+    komicomb.place(relx=0.15,rely=0.35,relwidth=0.1)
 
     yzylb = Label(root,text='指定yzy程序')
     yzylb.place(relx=0.41,rely=0.35)
     yzycomb = Combobox(root, values=yzylist, textvariable=varyzy)
-    yzycomb.place(relx=0.55,rely=0.35,relwidth=0.3)
+    yzycomb.place(relx=0.55,rely=0.35,relwidth=0.35)
 
     
     wlb= Label(root, text='棋盘尺寸：宽')
-    wlb.place(relx=0.1,rely=0.45)
+    wlb.place(relx=0.05,rely=0.45)
     wspinbox = Spinbox(root, from_=0, to=99, textvariable=varw)
-    wspinbox.place(relx=0.25,rely=0.45,relwidth=0.2)
+    wspinbox.place(relx=0.2,rely=0.45,relwidth=0.2)
 
     hlb= Label(root, text='棋盘尺寸：高')
-    hlb.place(relx=0.5,rely=0.45)
+    hlb.place(relx=0.55,rely=0.45)
     hspinbox = Spinbox(root, from_=0, to=99, textvariable=varh)
-    hspinbox.place(relx=0.65,rely=0.45,relwidth=0.2)
+    hspinbox.place(relx=0.7,rely=0.45,relwidth=0.2)
 
     def prev():
         cbox = {}       #初始化
@@ -109,15 +111,13 @@ def ui():
             os.system(str(yzycomb.get()))#jar方式启动
 
 
-
-
     btnprev = Button(root, text='预览', command=prev)
     btnstart = Button(root, text='启动', command=start)
     btnprev.place(relx=0.2,rely=0.55,relwidth=0.2)
     btnstart.place(relx=0.6,rely=0.55,relwidth=0.2)
 
     textprev = Text(root)
-    textprev.place(relx=0.1,rely=0.65,relwidth=0.8,relheight=0.25)
+    textprev.place(relx=0.05,rely=0.65,relwidth=0.9,relheight=0.25)
     textprev.config(state=DISABLED)
     #textprev.config(state=NORMAL)
 
