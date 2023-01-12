@@ -5,14 +5,19 @@ from plugins.icon import img
 from tkinter import *
 from tkinter.ttk import *
 from plugins import jsonw
+import ctypes
 
 
 
 def ui():
-
+    #使用程序自身的dpi适配
+    ctypes.windll.shcore.SetProcessDpiAwareness(1)
+    ScaleFactor=ctypes.windll.shcore.GetScaleFactorForDevice(0)
+    
     root=Tk()
+    root.tk.call('tk', 'scaling', ScaleFactor/68)
     root.title("Lizzieyzy快速设置")
-    root.geometry('720x480')
+    root.geometry('960x540')
     tmp = open("tmp.ico","wb+")
     tmp.write(base64.b64decode(img))
     tmp.close()
@@ -64,9 +69,9 @@ def ui():
     komicomb.place(relx=0.2,rely=0.35,relwidth=0.1)
 
     yzylb = Label(root,text='指定yzy程序')
-    yzylb.place(relx=0.4,rely=0.35)
+    yzylb.place(relx=0.41,rely=0.35)
     yzycomb = Combobox(root, values=yzylist, textvariable=varyzy)
-    yzycomb.place(relx=0.5,rely=0.35,relwidth=0.3)
+    yzycomb.place(relx=0.55,rely=0.35,relwidth=0.3)
 
     
     wlb= Label(root, text='棋盘尺寸：宽')
