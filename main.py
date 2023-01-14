@@ -4,7 +4,7 @@ import webbrowser
 from plugins.icon import img
 from tkinter import *
 from tkinter.ttk import *
-from plugins import jsonw
+from plugins import jsonw,dlwin
 import ctypes
 
 
@@ -50,8 +50,8 @@ def ui():
     enginlb.place(relx=0.05,rely=0.05)
     engincomb = Combobox(root, values=enginlist, textvariable=varengin)
     engincomb.place(relx=0.15,rely=0.05,relwidth=0.65)
-    btengindown = Button(root, text = "下载")
-    btengindown.place(relx = 0.8, rely = 0.05, relwidth=0.1)
+    btengindown = Button(root, text = "下载" ,command=dlwin.engui)
+    btengindown.place(relx = 0.81, rely = 0.05, relwidth=0.09)
 
     weightlb = Label(root,text='权重')
     weightlb.place(relx=0.05,rely=0.15)
