@@ -47,7 +47,7 @@ def set(filename, command, komi=7.5, width=19, height=19, name="AutoStart"):
         #config["ui"]["default-engine"] = cfg_odinal
         config["ui"]["autoload-default"] = True
 
-        settings = setlist[cfg_odinal]                  #引擎设置项
+        settings = setlist[cfg_odinal]                                      #引擎设置项
         settings["command"]=str(command)
         settings["komi"]=float(komi)
         settings["width"]=int(width)
